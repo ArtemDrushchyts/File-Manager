@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { up, cd, ls } from './src/handlers/handlers.js';
+import { up, cd, ls, cat, add } from './src/handlers/handlers.js';
 import { EOL, homedir } from 'os';
 import { getUserName, currentLocation } from './src/utils/helpers.js';
 
@@ -15,6 +15,7 @@ const fileManager = () => {
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
+        // prompt: currentLocation(currentDir)
     });
 
     rl.on('line', async (line) => {
@@ -24,6 +25,7 @@ const fileManager = () => {
         switch(true) {
             case command === 'up':
                 currentDir = up(currentDir);
+
                 currentLocation(currentDir);
                 break;
             case command === 'cd':
@@ -31,7 +33,16 @@ const fileManager = () => {
                 currentLocation(currentDir);
                 break;
             case command === 'ls':
-                await ls(currentDir);
+                currentDir = await ls(currentDir);
+                currentLocation(currentDir);
+                break;
+            case command === 'cat':
+                await cat(currentDir, args[0]);
+                currentLocation(currentDir);
+                break;
+            case command === 'add':
+                currentDir = await add(currentDir, args[0]);
+                currentLocation(currentDir);
                 break;
             default:
                 console.log('Invalid input')
