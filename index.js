@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { up, cd, ls, cat, add, rn, cp } from './src/handlers/handlers.js';
+import { up, cd, ls, cat, add, rn, cp, mv } from './src/handlers/handlers.js';
 import { EOL, homedir } from 'os';
 import { getUserName, currentLocation } from './src/utils/helpers.js';
 
@@ -49,7 +49,11 @@ const fileManager = () => {
                 currentLocation(currentDir);
                 break;
             case command === 'cp':
-                await cp(currentDir, args[0], args[1]);
+                currentDir = await cp(currentDir, args[0], args[1]);
+                currentLocation(currentDir);
+                break;
+            case command === 'mv':
+                currentDir = await mv(currentDir, args[0], args[1]);
                 currentLocation(currentDir);
                 break;
             default:

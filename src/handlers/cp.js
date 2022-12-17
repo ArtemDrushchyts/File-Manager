@@ -2,7 +2,7 @@ import { createReadStream, createWriteStream, constants } from 'fs';
 import fs from 'fs/promises';
 import { resolve, parse } from 'path';
 
-export const cp = async (currentPath, pathToFile, pathToNewDir) => {
+export const cp = async (currentPath, pathToFile, pathToNewDir, remove) => {
 
     let oldPath = resolve(currentPath, pathToFile);
     const { base } = parse(oldPath);
@@ -15,7 +15,12 @@ export const cp = async (currentPath, pathToFile, pathToNewDir) => {
         const readStream = createReadStream(oldPath);
         const writeStream = createWriteStream(newPathFile);
         await readStream.pipe(writeStream).on('finish', () => {
-            console.log(`File ${base} successfully copied to ${newPath}`)
+            if(remove) {
+                remove(oldPath);
+                console.log(`File ${base} successfully moved to ${newPath}`)
+            } else {
+                console.log(`File ${base} successfully copied to ${newPath}`);
+            }
         })
     } catch (err) {
         console.error('Operation failed');
