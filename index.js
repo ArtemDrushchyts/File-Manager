@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { up, cd, ls, cat, add, rn, cp, mv, rm, os } from './src/handlers/handlers.js';
+import { up, cd, ls, cat, add, rn, cp, mv, rm, os, hash } from './src/handlers/handlers.js';
 import { EOL, homedir } from 'os';
 import { getUserName, currentLocation } from './src/utils/helpers.js';
 
@@ -62,6 +62,10 @@ const fileManager = () => {
                 break;
             case command === 'os':
                 await os(currentDir, args[0]);
+                currentLocation(currentDir);
+                break;
+            case command === 'hash':
+                await hash(currentDir, args[0]);
                 currentLocation(currentDir);
                 break;
             default:

@@ -8,6 +8,7 @@ import { cp } from './cp.js';
 import { mv } from './mv.js';
 import { rm } from './rm.js';
 import { os } from './os.js';
+import { hash } from './hash.js';
 
 export {
     up,
@@ -19,5 +20,6 @@ export {
     cp,
     mv,
     rm,
-    os
+    os,
+    hash
 }
