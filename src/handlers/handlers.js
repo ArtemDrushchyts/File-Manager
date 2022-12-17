@@ -7,6 +7,7 @@ import { rn } from './rn.js';
 import { cp } from './cp.js';
 import { mv } from './mv.js';
 import { rm } from './rm.js';
+import { os } from './os.js';
 
 export {
     up,
@@ -17,5 +18,6 @@ export {
     rn,
     cp,
     mv,
-    rm
+    rm,
+    os
 }
