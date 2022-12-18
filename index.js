@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { up, cd, ls, cat, add, rn, cp, mv, rm, os, hash } from './src/handlers/handlers.js';
+import { up, cd, ls, cat, add, rn, cp, mv, rm, os, hash, compress, decompress } from './src/handlers/handlers.js';
 import { EOL, homedir } from 'os';
 import { getUserName, currentLocation } from './src/utils/helpers.js';
 
@@ -23,9 +23,11 @@ const fileManager = () => {
         let [command, ...args] = line.split(' ');
 
         switch(true) {
+            case command === '.exit':
+                rl.close();
+                break;
             case command === 'up':
                 currentDir = up(currentDir);
-
                 currentLocation(currentDir);
                 break;
             case command === 'cd':
@@ -66,6 +68,14 @@ const fileManager = () => {
                 break;
             case command === 'hash':
                 await hash(currentDir, args[0]);
+                currentLocation(currentDir);
+                break;
+            case command === 'compress':
+                await compress(currentDir, args[0], args[1]);
+                currentLocation(currentDir);
+                break;
+            case command === 'decompress':
+                await decompress(currentDir, args[0], args[1]);
                 currentLocation(currentDir);
                 break;
             default:
