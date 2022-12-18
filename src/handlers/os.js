@@ -4,7 +4,7 @@ export const os = async (currentPath, arg) => {
     try {
         const { username, homedir } = userInfo();
         const cpusInformation = () => {
-            console.log(`Amount of CPUs ${cpus().length}`);
+            // console.log(`Amount of CPUs ${cpus().length}`);
             const info = cpus().map(({model, speed}, index) => {
                 const Speed =  `${speed / 1000}GHz`;
                 const Model = model

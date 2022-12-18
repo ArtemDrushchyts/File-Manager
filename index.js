@@ -35,7 +35,7 @@ const fileManager = () => {
                 currentLocation(currentDir);
                 break;
             case command === 'ls':
-                currentDir = await ls(currentDir);
+                await ls(currentDir);
                 currentLocation(currentDir);
                 break;
             case command === 'cat':
@@ -43,7 +43,7 @@ const fileManager = () => {
                 currentLocation(currentDir);
                 break;
             case command === 'add':
-                currentDir = await add(currentDir, args[0]);
+                await add(currentDir, args[0]);
                 currentLocation(currentDir);
                 break;
             case command === 'rn':
