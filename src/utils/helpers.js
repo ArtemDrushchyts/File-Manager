@@ -2,7 +2,7 @@ import { access } from 'fs/promises';
 import { constants } from 'fs';
 
 export const getUserName = (args) => {
-    return args[0].split('=')[1] || 'Anonymous';
+    return args[0]?.split('=')[1] || 'Anonymous';
 };
 
 export const currentLocation = (path) => {
