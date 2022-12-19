@@ -1,6 +1,7 @@
 import { createReadStream, createWriteStream, constants } from 'fs';
 import fs from 'fs/promises';
 import { resolve, parse } from 'path';
+import { currentLocation } from '../utils/helpers.js';
 
 export const cp = async (currentPath, pathToFile, pathToNewDir, remove) => {
 
@@ -21,6 +22,7 @@ export const cp = async (currentPath, pathToFile, pathToNewDir, remove) => {
             } else {
                 console.log(`File ${base} successfully copied to ${newPath}`);
             }
+            currentLocation(currentPath);
         })
     } catch (err) {
         console.error('Operation failed');

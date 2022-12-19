@@ -36,31 +36,24 @@ const fileManager = () => {
                 break;
             case command === 'ls':
                 await ls(currentDir);
-                currentLocation(currentDir);
                 break;
             case command === 'cat':
                 await cat(currentDir, args[0]);
-                currentLocation(currentDir);
                 break;
             case command === 'add':
                 await add(currentDir, args[0]);
-                currentLocation(currentDir);
                 break;
             case command === 'rn':
                 await rn(currentDir, args[0], args[1]);
-                currentLocation(currentDir);
                 break;
             case command === 'cp':
                 await cp(currentDir, args[0], args[1]);
-                currentLocation(currentDir);
                 break;
             case command === 'mv':
                 await mv(currentDir, args[0], args[1]);
-                currentLocation(currentDir);
                 break;
             case command === 'rm':
                 await rm(currentDir, args[0]);
-                currentLocation(currentDir);
                 break;
             case command === 'os':
                 await os(currentDir, args[0]);

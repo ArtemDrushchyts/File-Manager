@@ -1,6 +1,6 @@
 import { isAbsolute, join, resolve } from 'path';
 import { createReadStream } from 'fs';
-import { validPath } from '../utils/helpers.js'
+import { validPath, currentLocation } from '../utils/helpers.js';
 
 export const cat = async (currentPath, args) => {
     let newPath = isAbsolute(args) ? args : join(currentPath, args);
@@ -16,6 +16,7 @@ export const cat = async (currentPath, args) => {
             readStream.on('end', () => {
                 readStream.destroy()
                 console.log('\nFile has been read');
+                currentLocation(currentPath);
             })
         } catch (err) {
             console.error('Operation failed');

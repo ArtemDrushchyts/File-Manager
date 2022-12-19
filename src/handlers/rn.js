@@ -1,5 +1,5 @@
 import { isAbsolute, join, resolve } from 'path';
-import { validPath } from '../utils/helpers.js'
+import { validPath, currentLocation } from '../utils/helpers.js'
 import fs from 'fs/promises';
 
 export const rn = async (currentPath, name, newName) => {
@@ -10,6 +10,7 @@ export const rn = async (currentPath, name, newName) => {
     if(valid) {
         try{
             await fs.rename(oldPath, newPath);
+            currentLocation(currentPath);
         } catch (err) {
             console.error('Operation failed');
         }

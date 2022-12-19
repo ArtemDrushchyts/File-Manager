@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { currentLocation } from '../utils/helpers.js';
 
 export const ls = async (currentPath) => {
     let list = [];
@@ -11,8 +12,9 @@ export const ls = async (currentPath) => {
                     Type: file.isDirectory() ? 'directory' : 'file'
                 });
             });
-            const sortList = list.sort()
-            console.table(sortList)
+            const sortList = list.sort();
+            console.table(sortList);
+            currentLocation(currentPath);
         })
     } catch (err) {
         console.error('Operation failed');
