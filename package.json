@@ -1,0 +1,26 @@
+{
+  "name": "file-manager",
+  "version": "1.0.0",
+  "description": "File manager on Node.js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArtemDrushchyts/File-Manager.git"
+  },
+  "keywords": [
+    "nodejs",
+    "assignments",
+    "filemanager"
+  ],
+  "author": "Artem Drushchyts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtemDrushchyts/File-Manager/issues"
+  },
+  "homepage": "https://github.com/ArtemDrushchyts/File-Manager#readme"
+}
